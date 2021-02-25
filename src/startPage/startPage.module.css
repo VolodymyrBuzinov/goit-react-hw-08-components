@@ -1,0 +1,29 @@
+.start {
+  background-image: url("../images/bg.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 500px;
+  padding-top: 200px;
+  text-align: center;
+}
+.start h1 {
+  margin-bottom: 40px;
+  margin-top: 0;
+  color: rgb(209, 64, 38);
+  background-color: #ffffff;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 20px;
+}
+.start p {
+  padding: 10px;
+  margin: 0;
+  background-color: #ffffff;
+  display: inline-block;
+  border-radius: 20px;
+  color: rgb(209, 64, 38);
+  font-size: 18px;
+  font-weight: 700;
+}
