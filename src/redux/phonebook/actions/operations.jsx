@@ -1,17 +1,27 @@
 import axios from 'axios';
 import actions from './actions';
 
+const {
+  actionItemsRequest,
+  actionItemsSuccess,
+  actionItemsError,
+  actionAddRequest,
+  actionAddSucess,
+  actionAddError,
+  actionDeleteRequest,
+  actionDeleteSucess,
+  actionDeleteError,
+} = actions;
 
-const { actionItemsRequest, actionItemsSuccess, actionItemsError, actionAddRequest, actionAddSucess, actionAddError, actionDeleteRequest, actionDeleteSucess, actionDeleteError, actionFilter } = actions;
-
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const fetchContacts = () => dispatch => {
   dispatch(actionItemsRequest());
 
   axios
-    .get('http://localhost:4040/contacts')
+    .get('/contacts')
     .then(({ data }) => dispatch(actionItemsSuccess(data)))
-    .catch(error => dispatch(actionItemsError(error)));
+    .catch(error => dispatch(actionItemsError(error.message)));
 };
 
 const actionAdd = (name, number) => dispatch => {
@@ -23,18 +33,19 @@ const actionAdd = (name, number) => dispatch => {
   dispatch(actionAddRequest());
 
   axios
-    .post('http://localhost:4040/contacts', item)
+    .post('/contacts', item)
     .then(({ data }) => dispatch(actionAddSucess(data)))
-    .catch(error => dispatch(actionAddError(error)));
+    .catch(error => dispatch(actionAddError(error.message)));
 };
 
 const actionDelete = contactId => dispatch => {
   dispatch(actionDeleteRequest());
 
   axios
-    .delete(`http://localhost:4040/contacts/${contactId}`)
+    .delete(`/contacts/${contactId}`)
     .then(() => dispatch(actionDeleteSucess(contactId)))
-    .catch(error => dispatch(actionDeleteError(error)));
+    .catch(error => dispatch(actionDeleteError(error.message)));
 };
 
-export default {fetchContacts, actionAdd, actionDelete };
+const exported = { fetchContacts, actionAdd, actionDelete };
+export default exported;

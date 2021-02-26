@@ -27,3 +27,14 @@
   color: #1ca095;
   border-bottom: 4px solid rgb(12, 212, 135);
 }
+.items {
+  color: red;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  outline: none;
+  border-bottom: 4px solid red;
+}

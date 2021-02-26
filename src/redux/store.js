@@ -7,7 +7,7 @@ import { FLUSH,
   PURGE,
   REGISTER,
 } from 'redux-persist';
-
+import authReducer from './auth/authReducers/authReducers';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -19,6 +19,7 @@ const middleware = [
 
 const mainReducer = combineReducers({
   contacts: phonebookReducer,
+  auth: authReducer
 });
 
 const store = configureStore({ reducer: mainReducer, middleware, devTools: process.env.NODE_ENV === 'development' });

@@ -2,13 +2,11 @@ import Phonebook from './phonebook/Phonebook';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  NavLink
+  Route,  
 } from "react-router-dom";
 import StartPage from './startPage/startPage';
-import Register from './register/Register';
-import Login from './login/Login';
+import Register from './auth/register/Register';
+import Login from './auth/login/Login';
 import Links from './Links.jsx';
 function App() {
   return (
