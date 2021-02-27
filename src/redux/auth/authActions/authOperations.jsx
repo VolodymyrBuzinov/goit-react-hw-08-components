@@ -64,10 +64,29 @@ const actionLogout = () => dispatch => {
     );
 };
 
+const actionGetCurrent = () => (dispatch, getState) => {
+  const { auth } = getState();
+  if (!auth.token) {
+    return;
+  }
+
+  token.set(auth.token);
+  dispatch(authActions.actionGetCurrentRequest());
+  axios
+    .get(`${BASE_URL}/current`)
+    .then(({ data }) =>
+      dispatch(authActions.actionGetCurrentSuccess(data)),
+    )
+    .catch(error =>
+      dispatch(authActions.actionGetCurrentError(error.message)),
+    );
+};
+
 const exported = {
   actionRegister,
   actionLogin,
   actionLogout,
+  actionGetCurrent,
 };
 
 export default exported;

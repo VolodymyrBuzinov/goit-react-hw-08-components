@@ -13,6 +13,15 @@ const actionLoginError = createAction('phonebook/LoginError');
 const actionLogoutRequest = createAction('phonebook/LogoutRequest');
 const actionLogoutSuccess = createAction('phonebook/LogoutSuccess');
 const actionLogoutError = createAction('phonebook/LogoutError');
+const actionGetCurrentRequest = createAction(
+  'phonebook/getCurrentRequest',
+);
+const actionGetCurrentSuccess = createAction(
+  'phonebook/getCurrentSuccess',
+);
+const actionGetCurrentError = createAction(
+  'phonebook/getCurrentError',
+);
 
 const exported = {
   actionRegisterRequest,
@@ -24,6 +33,9 @@ const exported = {
   actionLogoutRequest,
   actionLogoutSuccess,
   actionLogoutError,
+  actionGetCurrentRequest,
+  actionGetCurrentSuccess,
+  actionGetCurrentError,
 };
 
 export default exported;

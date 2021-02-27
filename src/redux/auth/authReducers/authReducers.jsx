@@ -9,6 +9,11 @@ const user = createReducer(
       payload.user,
     [authActions.actionLoginSuccess]: (state, { type, payload }) =>
       payload.user,
+    [authActions.actionGetCurrentSuccess]: (
+      state,
+      { type, payload },
+    ) => payload,
+    [authActions.actionLogoutSuccess]: () => ({}),
   },
 );
 const token = createReducer(
@@ -18,6 +23,7 @@ const token = createReducer(
       payload.token,
     [authActions.actionLoginSuccess]: (state, { type, payload }) =>
       payload.token,
+    [authActions.actionLogoutSuccess]: () => ({}),
   },
 );
 
@@ -31,6 +37,9 @@ const isAuthorised = createReducer(false, {
   [authActions.actionLogoutRequest]: () => true,
   [authActions.actionLogoutSuccess]: () => false,
   [authActions.actionLogoutError]: () => true,
+  [authActions.actionGetCurrentRequest]: () => false,
+  [authActions.actionGetCurrentSuccess]: () => true,
+  [authActions.actionGetCurrentError]: () => false,
 });
 
 const error = createReducer(false, {

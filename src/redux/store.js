@@ -6,8 +6,11 @@ import { FLUSH,
   PERSIST,
   PURGE,
   REGISTER,
+  persistStore,
+  persistReducer,
 } from 'redux-persist';
 import authReducer from './auth/authReducers/authReducers';
+import storage from 'redux-persist/lib/storage';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -17,12 +20,19 @@ const middleware = [
   }),
 ];
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token']
+}
 const mainReducer = combineReducers({
   contacts: phonebookReducer,
-  auth: authReducer
+  auth: persistReducer(authPersistConfig, authReducer),
 });
 
 const store = configureStore({ reducer: mainReducer, middleware, devTools: process.env.NODE_ENV === 'development' });
+const persistor = persistStore(store);
 
-export default store;
+const exported = {store, persistor}
+export default exported;
 

@@ -19,9 +19,7 @@ function ContactsList({ contacts, onContactDelete }) {
             classNames={styles}
             unmountOnExit
           >
-            <li className={styles.contactsTitle}>
-              Add contacts please
-            </li>
+            <li className={styles.addContact}>Add contacts please</li>
           </CSSTransition>
         ) : (
           contacts.map(contact => {
@@ -35,7 +33,7 @@ function ContactsList({ contacts, onContactDelete }) {
                 classNames={styles}
                 unmountOnExit
               >
-                <li key={uuidv4()}>
+                <li className={styles.item} key={uuidv4()}>
                   <p>Name: {name}</p>
                   <p>Number: {number}</p>
                   <button
@@ -43,7 +41,7 @@ function ContactsList({ contacts, onContactDelete }) {
                     type="button"
                     onClick={() => onContactDelete(id)}
                   >
-                    Delete contact
+                    Delete
                   </button>
                 </li>
               </CSSTransition>
